@@ -3,7 +3,7 @@ using UnityEngine;
 public abstract class Condition : MonoBehaviour
 {
     protected PlayerController PlayerController;
-    protected PlayerParameters Player;
+    protected PlayerParameters PlayerParameters;
     protected Transform CameraHolder;
     protected PlayerInputSystem InputSystem;
     protected Rigidbody Rigidbody;
@@ -11,7 +11,7 @@ public abstract class Condition : MonoBehaviour
     public void Awake()
     {
         PlayerController = GetComponent<PlayerController>();
-        Player = GetComponent<PlayerParameters>();
+        PlayerParameters = GetComponent<PlayerParameters>();
         InputSystem = PlayerController.InputSystem;
         Rigidbody = PlayerController.Rigidbody;
         CameraHolder = PlayerController.CameraHolder;

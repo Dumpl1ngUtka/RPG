@@ -18,12 +18,12 @@ public class Move : Condition
         if (InputSystem.Movement.Recovery.IsPressed() && !_isRecovery)
         {
             _isRecovery = true;
-            SetParameters(_speed / PlayerController.ManaRecoverySpeedDivision.Get());
+            SetParameters(_speed / PlayerParameters.ManaRecoverySpeedDivision.Get());
         }
         else if (!InputSystem.Movement.Recovery.IsPressed() && _isRecovery)
         {
             _isRecovery = false;
-            SetParameters(PlayerController.Speed.Get());
+            SetParameters(PlayerParameters.Speed.Get());
         }
         if (_isRecovery)
             PlayerController.ManaRecovery();
@@ -32,6 +32,14 @@ public class Move : Condition
         {
             PlayerController.ChangeCurrentCondition(PlayerController.AttackCondition);
         }
+
+        if (InputSystem.Movement.Take.triggered)
+        {
+            PlayerController.ChangeCurrentCondition(PlayerController.LootingCondition);
+        }
+
+        if (InputSystem.Movement.SpellLeft.triggered) 
+            Debug.Log("AAAA");
     }
 
     private void FixedUpdate()
@@ -59,12 +67,17 @@ public class Move : Condition
 
     private void OnEnable()
     {
-        SetParameters(PlayerController.Speed.Get());
+        SetParameters(PlayerParameters.Speed.Get());
         _isRecovery = false;
     }
 
     private void OnDisable()
     {
         Rigidbody.velocity = Vector3.zero;
+    }
+
+    public void ApplyDamage(float damage)
+    {
+        throw new System.NotImplementedException();
     }
 }

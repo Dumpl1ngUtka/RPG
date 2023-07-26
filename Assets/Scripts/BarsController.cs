@@ -1,26 +1,43 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class BarsController : MonoBehaviour
 {
-    [SerializeField] private Image _HPBar;
+    public enum Bar
+    {
+        Health = 0,
+        Stamina = 1,
+        Mana = 2,
+        Armor = 3,
+    }
+
+    [SerializeField] private Image _healthBar;
     [SerializeField] private Image _staminaBar;
     [SerializeField] private Image _manaBar;
     [SerializeField] private Image _armorBar;
-    [SerializeField] private PlayerController _playerController;
+    private CanvasGroup _canvasGroup;
 
-    private void Start()
+    private void Awake()
     {
-        ChangeValue();  
-    }
-    public void ChangeValue()
-    {
-        _HPBar.fillAmount = _playerController.HP / _playerController.MaxHP.Get();
-        _staminaBar.fillAmount = (float)_playerController.Stamina / _playerController.MaxStamina.Get();
-        _manaBar.fillAmount = _playerController.Mana / _playerController.MaxMana.Get();
-        _armorBar.fillAmount = 0.5f;
+        _canvasGroup = GetComponent<CanvasGroup>();
     }
 
+    public void ChangeValue(Bar bar, float value)
+    {
+        switch (bar)
+        {
+            case Bar.Health:
+                _healthBar.fillAmount = value;
+                break;
+            case Bar.Stamina:
+                _staminaBar.fillAmount = value;
+                break;
+            case Bar.Mana:
+                _manaBar.fillAmount = value;
+                break;
+            case Bar.Armor:
+                _armorBar.fillAmount = value;
+                break;
+        }
+    }
 }

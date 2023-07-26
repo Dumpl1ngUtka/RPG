@@ -1,18 +1,61 @@
-public class Parameter
+public struct Parameter
 {
-    private float _value;
-    public Parameter(float value)
+    public float Value { get; private set; }
+    public float BonusValue { get; private set; }
+    public Parameter(float value, float bonusValue = 0)
     {
-        _value = value;
+        Value = value;
+        BonusValue = bonusValue;
     }
 
     public float Get()
     {
-        return _value;
+        return Value + BonusValue;
     }
 
-    public void Set(float value)
+    public void SetValue(float newValue)
     {
-        _value = value;
+        Value = newValue;
+    }
+
+    public void RemoveBonus()
+    {
+        BonusValue = 0;
+    }
+    public static Parameter operator +(Parameter a, float value)
+    {
+        return new Parameter(a.Value,a.BonusValue + value);
+    }
+
+    public static Parameter operator *(Parameter a, float value)
+    {
+        return new Parameter(a.Value, a.BonusValue + a.Value * (value - 1));
+    }
+
+    public static Parameter operator +(float value, Parameter a)
+    {
+        return new Parameter(a.Value, a.BonusValue + value);
+    }
+
+    public static Parameter operator *(float value, Parameter a)
+    {
+        return new Parameter(a.Value, a.BonusValue + a.Value * (value - 1));
+    }
+    public static bool operator >(Parameter a, float value)
+    {
+        return a.Get() > value;
+    }
+    public static bool operator <(Parameter a, float value)
+    {
+        return a.Get() < value;
+    }
+
+    public static bool operator >(float value, Parameter a)
+    {
+        return a.Get() < value;
+    }
+    public static bool operator <(float value, Parameter a)
+    {
+        return a.Get() > value;
     }
 }

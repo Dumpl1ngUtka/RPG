@@ -1,58 +1,72 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : PlayerParameters
+public class PlayerController : MonoBehaviour 
 {
-    public Condition MoveCondition;
-    public Condition ApplyDamageCondition;
-    public Condition DodgeCondition;
-    public Condition AttackCondition;
+    [SerializeField] protected BarsController BarsController;
+    public Condition MoveCondition { get; private set; }
+    public Condition ApplyDamageCondition { get; private set; }
+    public Condition DodgeCondition { get; private set; }
+    public Condition AttackCondition { get; private set; }
+    public Condition LootingCondition { get; private set; }
+
     private List<Condition> _conditions = new List<Condition>();
+    
     public Transform CameraHolder;
     public PlayerInputSystem InputSystem { get; private set; }
     public Rigidbody Rigidbody { get; private set; }
 
     private float _staminaTimer = 0;
-    public float HP { get; private set; }
+    public float Health { get; private set; }
     public float Stamina { get; private set; }
     public float Mana{ get; private set; }
 
-    private float _periodicDamage;
+    private PlayerParameters _parameters;
 
     private void Awake()
     {
         InputSystem = new PlayerInputSystem();
         Rigidbody = GetComponent<Rigidbody>();
-        HP = MaxHP.Get();
-        Stamina = MaxStamina.Get();
+        _parameters = GetComponent<PlayerParameters>();
+
+        MoveCondition = GetComponent<Move>();
+        ApplyDamageCondition = GetComponent<ApplyDamage>();
+        AttackCondition = GetComponent<Attack>();
+        DodgeCondition = GetComponent<Dodge>();
+        LootingCondition = GetComponent<Looting>();
+
+        Health = _parameters.MaxHealth.Get();
+        Stamina = _parameters.MaxStamina.Get();
         Mana = 0;
+
+        UpdateBarsValue();
     }
 
     private void Start()
-    {        
+    {
+        UpdateParameters();
         ChangeCurrentCondition(MoveCondition);
     }
 
     private void Update()
     {
-        if (Stamina < MaxStamina.Get())
+        if (Stamina < _parameters.MaxStamina)
         {
             _staminaTimer += Time.deltaTime;
-            if (_staminaTimer > StaminaRegenerationPerSecond.Get())
+            if (_staminaTimer > _parameters.StaminaRegenerationPerSecond)
             {
                 Stamina++;
                 _staminaTimer = 0;
-                _barsController.ChangeValue();
+                BarsController.ChangeValue(BarsController.Bar.Stamina,Stamina/ _parameters.MaxStamina.Get());
             }
         }
     }
-
     public void SpendStamina(int delta)
     {
         Stamina -= delta;
         if (Stamina < 0)
             Stamina = 0;
-        _barsController.ChangeValue();
+        BarsController.ChangeValue(BarsController.Bar.Stamina, Stamina / _parameters.MaxStamina.Get());
     }
 
     public void SpendMana(float delta)
@@ -60,13 +74,13 @@ public class PlayerController : PlayerParameters
         Mana -= delta;
         if (Mana < 0)
             Mana = 0;
-        _barsController.ChangeValue();
+        BarsController.ChangeValue(BarsController.Bar.Mana, Mana / _parameters.MaxMana.Get());
     }
     public void ManaRecovery(float multiplier = 1)
     {
-        if (Mana < MaxMana.Get())
-            Mana += multiplier * ManaRegenerationPerSecond.Get() * Time.deltaTime;
-        _barsController.ChangeValue();
+        if (Mana < _parameters.MaxMana)
+            Mana += multiplier * _parameters.ManaRegenerationPerSecond.Get() * Time.deltaTime;
+        BarsController.ChangeValue(BarsController.Bar.Mana, Mana / _parameters.MaxMana.Get());
     }
     public void AddCondition(Condition condition)
     {
@@ -81,6 +95,19 @@ public class PlayerController : PlayerParameters
         newCondition.enabled = true;
     }
 
+    private void UpdateBarsValue()
+    {
+        BarsController.ChangeValue(BarsController.Bar.Health, Health / _parameters.MaxHealth.Get());
+        BarsController.ChangeValue(BarsController.Bar.Stamina, Stamina / _parameters.MaxStamina.Get());
+        BarsController.ChangeValue(BarsController.Bar.Mana, Mana / _parameters.MaxMana.Get());
+        BarsController.ChangeValue(BarsController.Bar.Armor, 0.5f);
+    }
+
+    public void UpdateParameters()
+    {
+        _parameters.UpdateParameters();       
+    }
+
     private void OnEnable()
     {
         InputSystem.Enable();
@@ -92,27 +119,11 @@ public class PlayerController : PlayerParameters
     }
     public void ApplyDamage(float damage)
     {
-        HP -= damage;
-        if (HP < 0)
+        Health -= damage;
+        if (Health < 0)
         {
             Debug.Log("Player Die");
         }
-        _barsController.ChangeValue();
-    }
-    private void OnTriggerEnter(Collider other)
-    {
-        var hitBox = other.GetComponent<HitBox>();
-        if (hitBox != null && hitBox.IsPeriodicDamage)
-        {
-            _periodicDamage = hitBox.DamagePerSecond * Time.fixedDeltaTime;
-        }
-    }
-    private void OnTriggerStay(Collider other)
-    {
-        var hitBox = other.GetComponent<HitBox>();
-        if (hitBox != null && hitBox.IsPeriodicDamage)
-        {
-            ApplyDamage(_periodicDamage);
-        }
+        BarsController.ChangeValue(BarsController.Bar.Health, Health / _parameters.MaxHealth.Get());
     }
 }
