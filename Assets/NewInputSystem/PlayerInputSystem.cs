@@ -73,42 +73,6 @@ public partial class @PlayerInputSystem: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""SpellUp"",
-                    ""type"": ""Button"",
-                    ""id"": ""ec971125-33c1-45f2-9e1a-821b555cf8e7"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""SpellLeft"",
-                    ""type"": ""Button"",
-                    ""id"": ""83c9c642-bd8f-4c83-a65c-3d517b1ca511"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""SpellRight"",
-                    ""type"": ""Button"",
-                    ""id"": ""b1306460-11c4-405b-8ebc-77c59b3bee94"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""SpellDown"",
-                    ""type"": ""Button"",
-                    ""id"": ""37b36df8-d741-4b4f-a80c-920da20f2696"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
                     ""name"": ""Attack"",
                     ""type"": ""Button"",
                     ""id"": ""5f4a867e-2646-4056-84b5-2b8dff3f2b08"",
@@ -130,6 +94,15 @@ public partial class @PlayerInputSystem: IInputActionCollection2, IDisposable
                     ""name"": ""Take"",
                     ""type"": ""Button"",
                     ""id"": ""455158ef-574a-4f75-ac05-8d3902fb0896"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Spell"",
+                    ""type"": ""Button"",
+                    ""id"": ""f7e77fbb-98f2-43ac-9388-385fa20391e6"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -216,17 +189,6 @@ public partial class @PlayerInputSystem: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""748b46c8-fbad-4c23-926c-15fb035134d0"",
-                    ""path"": ""<Mouse>/delta"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Look"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""467a6c50-114a-4e35-b71c-17487528a104"",
                     ""path"": ""<Gamepad>/rightStickPress"",
                     ""interactions"": """",
@@ -303,138 +265,6 @@ public partial class @PlayerInputSystem: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 },
                 {
-                    ""name"": ""One Modifier"",
-                    ""id"": ""d8e5eeee-4fff-4c65-8354-c8311a4cfd39"",
-                    ""path"": ""OneModifier"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""SpellUp"",
-                    ""isComposite"": true,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": ""modifier"",
-                    ""id"": ""abab49e2-40db-414e-8977-aba5ccb02cd8"",
-                    ""path"": ""<Gamepad>/rightShoulder"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""SpellUp"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""binding"",
-                    ""id"": ""7ea7e667-cfd1-4c33-a6d2-855e50db58c8"",
-                    ""path"": ""<Gamepad>/buttonNorth"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""SpellUp"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""One Modifier"",
-                    ""id"": ""5add8032-9654-4d5d-9233-cdf9f395fbdd"",
-                    ""path"": ""OneModifier"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""SpellLeft"",
-                    ""isComposite"": true,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": ""modifier"",
-                    ""id"": ""68eea499-b1cc-443b-b756-d535a992b1ff"",
-                    ""path"": ""<Gamepad>/rightShoulder"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""SpellLeft"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""binding"",
-                    ""id"": ""d2335123-93c3-4b30-973c-ce1c2f53286e"",
-                    ""path"": ""<Gamepad>/buttonWest"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""SpellLeft"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""One Modifier"",
-                    ""id"": ""60bdbf91-d7ab-4b57-8918-703e38b0252c"",
-                    ""path"": ""OneModifier"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""SpellRight"",
-                    ""isComposite"": true,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": ""modifier"",
-                    ""id"": ""852caa2d-3539-472f-8670-1b489088400a"",
-                    ""path"": ""<Gamepad>/rightShoulder"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""SpellRight"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""binding"",
-                    ""id"": ""2ca1449a-e1ad-4e01-8119-6bcd74d2fd4f"",
-                    ""path"": ""<Gamepad>/buttonEast"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""SpellRight"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""One Modifier"",
-                    ""id"": ""26447033-a74e-423d-b9e4-1c61407625df"",
-                    ""path"": ""OneModifier"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""SpellDown"",
-                    ""isComposite"": true,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": ""modifier"",
-                    ""id"": ""0338c659-2c26-4c58-b638-cd610a2c535c"",
-                    ""path"": ""<Gamepad>/rightShoulder"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""SpellDown"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""binding"",
-                    ""id"": ""02bc68d1-1070-42ff-be2b-b2908a8e2543"",
-                    ""path"": ""<Gamepad>/buttonSouth"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""SpellDown"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
                     ""name"": """",
                     ""id"": ""5014f754-7fed-4ded-9a7a-a5968d453863"",
                     ""path"": ""<Gamepad>/buttonWest"",
@@ -469,8 +299,30 @@ public partial class @PlayerInputSystem: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""0c183670-7c87-4939-a49f-f3c50e1f5a10"",
+                    ""id"": ""53dcc58a-e68c-4b9b-81ee-99de4c6050bc"",
                     ""path"": ""<Gamepad>/rightStick/right"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ChangeTarget"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""67ae4cea-3dc9-4810-96c0-f6f5d4754472"",
+                    ""path"": ""<Gamepad>/rightStick/up"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ChangeTarget"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ab753eec-f01f-426b-8fc4-c9eb6f82d0af"",
+                    ""path"": ""<Gamepad>/rightStick/down"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -510,6 +362,28 @@ public partial class @PlayerInputSystem: IInputActionCollection2, IDisposable
                     ""action"": ""Take"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4f9ec7fa-5aca-45c6-a40d-c8a73563edb3"",
+                    ""path"": ""<Gamepad>/buttonNorth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Spell"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""842819a2-1e46-4a21-8e3f-b1404826a518"",
+                    ""path"": ""<Keyboard>/c"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Spell"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -530,9 +404,9 @@ public partial class @PlayerInputSystem: IInputActionCollection2, IDisposable
                     ""name"": ""Choosing"",
                     ""type"": ""Value"",
                     ""id"": ""a3e4be1a-cbb1-402a-931e-20db69d822f4"",
-                    ""expectedControlType"": ""Dpad"",
+                    ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
-                    ""interactions"": """",
+                    ""interactions"": ""Hold(duration=0.01)"",
                     ""initialStateCheck"": true
                 },
                 {
@@ -552,6 +426,24 @@ public partial class @PlayerInputSystem: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""InventoryOpen"",
+                    ""type"": ""Button"",
+                    ""id"": ""5e5674f4-0947-45b5-94ba-5fab9293b626"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ChangeTabs"",
+                    ""type"": ""Value"",
+                    ""id"": ""81dec597-cd8f-4bb7-8fae-d3c615a269ab"",
+                    ""expectedControlType"": ""Axis"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -568,7 +460,7 @@ public partial class @PlayerInputSystem: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""540674c1-3df6-4523-b7c2-1c61809f51c7"",
+                    ""id"": ""a3acbc41-96e3-459b-8878-273994faaba7"",
                     ""path"": ""<Keyboard>/escape"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -589,8 +481,19 @@ public partial class @PlayerInputSystem: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 },
                 {
+                    ""name"": """",
+                    ""id"": ""458c93c8-5022-4fda-8b9a-257924b2220a"",
+                    ""path"": ""<Gamepad>/leftStick"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Choosing"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
                     ""name"": ""2D Vector"",
-                    ""id"": ""c4e5db08-51fa-4dda-aec4-26a981e7551f"",
+                    ""id"": ""c2ca2562-5563-4b22-bae6-ded52a238ed5"",
                     ""path"": ""2DVector"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -601,7 +504,7 @@ public partial class @PlayerInputSystem: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""up"",
-                    ""id"": ""3554bbab-fedc-4b00-aae3-108ef9c25ca7"",
+                    ""id"": ""7ed386ad-1372-42ce-96f4-7c69c8bdedaa"",
                     ""path"": ""<Keyboard>/w"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -612,8 +515,30 @@ public partial class @PlayerInputSystem: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""down"",
-                    ""id"": ""38c18595-ccc5-44c2-aca9-efc983a2a28e"",
+                    ""id"": ""e84511a3-db21-4c4a-83eb-12b96600f75d"",
                     ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Choosing"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""e1d4d7f2-8883-40f3-8176-dafae084e2dd"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Choosing"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""e872eeb8-3986-4ec4-99bb-3765f72b4cf1"",
+                    ""path"": ""<Keyboard>/d"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -664,6 +589,83 @@ public partial class @PlayerInputSystem: IInputActionCollection2, IDisposable
                     ""action"": ""Accept"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8d0666bd-c63c-4e4f-b2f1-422f60182503"",
+                    ""path"": ""<Keyboard>/i"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""InventoryOpen"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""1D Axis"",
+                    ""id"": ""981b6239-3472-4468-b9f2-9f6e763e156c"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ChangeTabs"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""94506296-60b5-43c3-9398-bee7362bc332"",
+                    ""path"": ""<Gamepad>/leftTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ChangeTabs"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""05895ad8-5b3f-4e24-8d77-644b737818c2"",
+                    ""path"": ""<Gamepad>/rightTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ChangeTabs"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""1D Axis"",
+                    ""id"": ""4a9c7b2a-87d9-4846-bcda-cd21f9b8e116"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ChangeTabs"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""09a311d6-af31-473f-9061-8c86a92852b4"",
+                    ""path"": ""<Keyboard>/1"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ChangeTabs"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""fbef91ac-fdc6-41c9-b3b8-4212b0a2c652"",
+                    ""path"": ""<Keyboard>/3"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ChangeTabs"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
                 }
             ]
         }
@@ -677,19 +679,18 @@ public partial class @PlayerInputSystem: IInputActionCollection2, IDisposable
         m_Movement_Target = m_Movement.FindAction("Target", throwIfNotFound: true);
         m_Movement_Dodge = m_Movement.FindAction("Dodge", throwIfNotFound: true);
         m_Movement_Recovery = m_Movement.FindAction("Recovery", throwIfNotFound: true);
-        m_Movement_SpellUp = m_Movement.FindAction("SpellUp", throwIfNotFound: true);
-        m_Movement_SpellLeft = m_Movement.FindAction("SpellLeft", throwIfNotFound: true);
-        m_Movement_SpellRight = m_Movement.FindAction("SpellRight", throwIfNotFound: true);
-        m_Movement_SpellDown = m_Movement.FindAction("SpellDown", throwIfNotFound: true);
         m_Movement_Attack = m_Movement.FindAction("Attack", throwIfNotFound: true);
         m_Movement_ChangeTarget = m_Movement.FindAction("ChangeTarget", throwIfNotFound: true);
         m_Movement_Take = m_Movement.FindAction("Take", throwIfNotFound: true);
+        m_Movement_Spell = m_Movement.FindAction("Spell", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_MenuOpen = m_UI.FindAction("MenuOpen", throwIfNotFound: true);
         m_UI_Choosing = m_UI.FindAction("Choosing", throwIfNotFound: true);
         m_UI_Back = m_UI.FindAction("Back", throwIfNotFound: true);
         m_UI_Accept = m_UI.FindAction("Accept", throwIfNotFound: true);
+        m_UI_InventoryOpen = m_UI.FindAction("InventoryOpen", throwIfNotFound: true);
+        m_UI_ChangeTabs = m_UI.FindAction("ChangeTabs", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -756,13 +757,10 @@ public partial class @PlayerInputSystem: IInputActionCollection2, IDisposable
     private readonly InputAction m_Movement_Target;
     private readonly InputAction m_Movement_Dodge;
     private readonly InputAction m_Movement_Recovery;
-    private readonly InputAction m_Movement_SpellUp;
-    private readonly InputAction m_Movement_SpellLeft;
-    private readonly InputAction m_Movement_SpellRight;
-    private readonly InputAction m_Movement_SpellDown;
     private readonly InputAction m_Movement_Attack;
     private readonly InputAction m_Movement_ChangeTarget;
     private readonly InputAction m_Movement_Take;
+    private readonly InputAction m_Movement_Spell;
     public struct MovementActions
     {
         private @PlayerInputSystem m_Wrapper;
@@ -772,13 +770,10 @@ public partial class @PlayerInputSystem: IInputActionCollection2, IDisposable
         public InputAction @Target => m_Wrapper.m_Movement_Target;
         public InputAction @Dodge => m_Wrapper.m_Movement_Dodge;
         public InputAction @Recovery => m_Wrapper.m_Movement_Recovery;
-        public InputAction @SpellUp => m_Wrapper.m_Movement_SpellUp;
-        public InputAction @SpellLeft => m_Wrapper.m_Movement_SpellLeft;
-        public InputAction @SpellRight => m_Wrapper.m_Movement_SpellRight;
-        public InputAction @SpellDown => m_Wrapper.m_Movement_SpellDown;
         public InputAction @Attack => m_Wrapper.m_Movement_Attack;
         public InputAction @ChangeTarget => m_Wrapper.m_Movement_ChangeTarget;
         public InputAction @Take => m_Wrapper.m_Movement_Take;
+        public InputAction @Spell => m_Wrapper.m_Movement_Spell;
         public InputActionMap Get() { return m_Wrapper.m_Movement; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -803,18 +798,6 @@ public partial class @PlayerInputSystem: IInputActionCollection2, IDisposable
             @Recovery.started += instance.OnRecovery;
             @Recovery.performed += instance.OnRecovery;
             @Recovery.canceled += instance.OnRecovery;
-            @SpellUp.started += instance.OnSpellUp;
-            @SpellUp.performed += instance.OnSpellUp;
-            @SpellUp.canceled += instance.OnSpellUp;
-            @SpellLeft.started += instance.OnSpellLeft;
-            @SpellLeft.performed += instance.OnSpellLeft;
-            @SpellLeft.canceled += instance.OnSpellLeft;
-            @SpellRight.started += instance.OnSpellRight;
-            @SpellRight.performed += instance.OnSpellRight;
-            @SpellRight.canceled += instance.OnSpellRight;
-            @SpellDown.started += instance.OnSpellDown;
-            @SpellDown.performed += instance.OnSpellDown;
-            @SpellDown.canceled += instance.OnSpellDown;
             @Attack.started += instance.OnAttack;
             @Attack.performed += instance.OnAttack;
             @Attack.canceled += instance.OnAttack;
@@ -824,6 +807,9 @@ public partial class @PlayerInputSystem: IInputActionCollection2, IDisposable
             @Take.started += instance.OnTake;
             @Take.performed += instance.OnTake;
             @Take.canceled += instance.OnTake;
+            @Spell.started += instance.OnSpell;
+            @Spell.performed += instance.OnSpell;
+            @Spell.canceled += instance.OnSpell;
         }
 
         private void UnregisterCallbacks(IMovementActions instance)
@@ -843,18 +829,6 @@ public partial class @PlayerInputSystem: IInputActionCollection2, IDisposable
             @Recovery.started -= instance.OnRecovery;
             @Recovery.performed -= instance.OnRecovery;
             @Recovery.canceled -= instance.OnRecovery;
-            @SpellUp.started -= instance.OnSpellUp;
-            @SpellUp.performed -= instance.OnSpellUp;
-            @SpellUp.canceled -= instance.OnSpellUp;
-            @SpellLeft.started -= instance.OnSpellLeft;
-            @SpellLeft.performed -= instance.OnSpellLeft;
-            @SpellLeft.canceled -= instance.OnSpellLeft;
-            @SpellRight.started -= instance.OnSpellRight;
-            @SpellRight.performed -= instance.OnSpellRight;
-            @SpellRight.canceled -= instance.OnSpellRight;
-            @SpellDown.started -= instance.OnSpellDown;
-            @SpellDown.performed -= instance.OnSpellDown;
-            @SpellDown.canceled -= instance.OnSpellDown;
             @Attack.started -= instance.OnAttack;
             @Attack.performed -= instance.OnAttack;
             @Attack.canceled -= instance.OnAttack;
@@ -864,6 +838,9 @@ public partial class @PlayerInputSystem: IInputActionCollection2, IDisposable
             @Take.started -= instance.OnTake;
             @Take.performed -= instance.OnTake;
             @Take.canceled -= instance.OnTake;
+            @Spell.started -= instance.OnSpell;
+            @Spell.performed -= instance.OnSpell;
+            @Spell.canceled -= instance.OnSpell;
         }
 
         public void RemoveCallbacks(IMovementActions instance)
@@ -889,6 +866,8 @@ public partial class @PlayerInputSystem: IInputActionCollection2, IDisposable
     private readonly InputAction m_UI_Choosing;
     private readonly InputAction m_UI_Back;
     private readonly InputAction m_UI_Accept;
+    private readonly InputAction m_UI_InventoryOpen;
+    private readonly InputAction m_UI_ChangeTabs;
     public struct UIActions
     {
         private @PlayerInputSystem m_Wrapper;
@@ -897,6 +876,8 @@ public partial class @PlayerInputSystem: IInputActionCollection2, IDisposable
         public InputAction @Choosing => m_Wrapper.m_UI_Choosing;
         public InputAction @Back => m_Wrapper.m_UI_Back;
         public InputAction @Accept => m_Wrapper.m_UI_Accept;
+        public InputAction @InventoryOpen => m_Wrapper.m_UI_InventoryOpen;
+        public InputAction @ChangeTabs => m_Wrapper.m_UI_ChangeTabs;
         public InputActionMap Get() { return m_Wrapper.m_UI; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -918,6 +899,12 @@ public partial class @PlayerInputSystem: IInputActionCollection2, IDisposable
             @Accept.started += instance.OnAccept;
             @Accept.performed += instance.OnAccept;
             @Accept.canceled += instance.OnAccept;
+            @InventoryOpen.started += instance.OnInventoryOpen;
+            @InventoryOpen.performed += instance.OnInventoryOpen;
+            @InventoryOpen.canceled += instance.OnInventoryOpen;
+            @ChangeTabs.started += instance.OnChangeTabs;
+            @ChangeTabs.performed += instance.OnChangeTabs;
+            @ChangeTabs.canceled += instance.OnChangeTabs;
         }
 
         private void UnregisterCallbacks(IUIActions instance)
@@ -934,6 +921,12 @@ public partial class @PlayerInputSystem: IInputActionCollection2, IDisposable
             @Accept.started -= instance.OnAccept;
             @Accept.performed -= instance.OnAccept;
             @Accept.canceled -= instance.OnAccept;
+            @InventoryOpen.started -= instance.OnInventoryOpen;
+            @InventoryOpen.performed -= instance.OnInventoryOpen;
+            @InventoryOpen.canceled -= instance.OnInventoryOpen;
+            @ChangeTabs.started -= instance.OnChangeTabs;
+            @ChangeTabs.performed -= instance.OnChangeTabs;
+            @ChangeTabs.canceled -= instance.OnChangeTabs;
         }
 
         public void RemoveCallbacks(IUIActions instance)
@@ -958,13 +951,10 @@ public partial class @PlayerInputSystem: IInputActionCollection2, IDisposable
         void OnTarget(InputAction.CallbackContext context);
         void OnDodge(InputAction.CallbackContext context);
         void OnRecovery(InputAction.CallbackContext context);
-        void OnSpellUp(InputAction.CallbackContext context);
-        void OnSpellLeft(InputAction.CallbackContext context);
-        void OnSpellRight(InputAction.CallbackContext context);
-        void OnSpellDown(InputAction.CallbackContext context);
         void OnAttack(InputAction.CallbackContext context);
         void OnChangeTarget(InputAction.CallbackContext context);
         void OnTake(InputAction.CallbackContext context);
+        void OnSpell(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {
@@ -972,5 +962,7 @@ public partial class @PlayerInputSystem: IInputActionCollection2, IDisposable
         void OnChoosing(InputAction.CallbackContext context);
         void OnBack(InputAction.CallbackContext context);
         void OnAccept(InputAction.CallbackContext context);
+        void OnInventoryOpen(InputAction.CallbackContext context);
+        void OnChangeTabs(InputAction.CallbackContext context);
     }
 }

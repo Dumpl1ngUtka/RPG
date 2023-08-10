@@ -35,13 +35,11 @@ public class Looting : Condition
         if (items.Count > 0)
         {
             _menu.gameObject.SetActive(true);
-            _menu.Clear();
             _menu.AddItems(items);
         }
         else
         {
             PlayerController.ChangeCurrentCondition(PlayerController.MoveCondition);
-        }
-            
+        }   
     }
 }

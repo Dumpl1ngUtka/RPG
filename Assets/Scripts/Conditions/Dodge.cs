@@ -22,7 +22,7 @@ public class Dodge : Condition
     {
         SetParameters(PlayerParameters.DodgeConditionTime.Get(), PlayerParameters.DodgeSpeed.Get());
         var inputValue = InputSystem.Movement.Move.ReadValue<Vector2>();
-        var dodgeDirection = CameraHolder.forward * inputValue.y + CameraHolder.right * inputValue.x;
+        var dodgeDirection = CameraTransform.forward * inputValue.y + CameraTransform.right * inputValue.x;
         dodgeDirection.y = 0;
         dodgeDirection.Normalize();
         Rigidbody.velocity = dodgeDirection * _speed;

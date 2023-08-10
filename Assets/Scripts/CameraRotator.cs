@@ -4,17 +4,13 @@ using UnityEngine;
 public class CameraRotator : MonoBehaviour
 {
     [SerializeField] private PlayerController _player;
-    [SerializeField] private GameObject _pivot;
-    private Camera _camera;
-    private Vector3 _offset = new Vector3(0,2,-5);
-    private float _verticalSpeed = 100;
-    private float _horizontalSpeed = 200;
-    private readonly int _maxYRotation = 70;
-    private readonly int _minYRotation = -10;
-    private readonly int _followingSpeed = 30;
-    private Vector3 _rotationDirection = Vector3.zero;
+    [SerializeField] private TargetDetector _targetDetector;
+    private Vector3 _offset = new Vector3(1,1,0);
+    private float cameraFollowResistance = 50f;
+    private Vector3 _lookAtPoint;
+    private float _distance = 10;
     private bool _isLookAtTarget;
-    private List<Transform> _enemiesPosition = new List<Transform>();
+    private List<Transform> _enemiesPosition;
     private Transform _currentTarget;
 
     private PlayerInputSystem _inputSystem;
@@ -22,8 +18,7 @@ public class CameraRotator : MonoBehaviour
     private void Awake()
     {
         _inputSystem = new PlayerInputSystem();
-        _camera = Camera.main;
-        _camera.transform.localPosition = _offset;
+        _enemiesPosition = _targetDetector.EnemiesPosition;
         SwichLookMode(false);
 
         _inputSystem.Movement.Target.performed += ctx => SwichLookMode(!_isLookAtTarget);
@@ -39,70 +34,67 @@ public class CameraRotator : MonoBehaviour
         {
             FreeRotationCondition();
         }
-        transform.rotation = Quaternion.Lerp(transform.rotation, _pivot.transform.rotation,
-            Time.deltaTime * _followingSpeed);
+        var distance = (transform.localPosition - _lookAtPoint).magnitude;
+        transform.localPosition = Vector3.MoveTowards(transform.localPosition, _lookAtPoint, distance / cameraFollowResistance);
     }
 
+    private float Zoom—oefficient()
+    {
+        var distanceToTarget = (_player.transform.position - _currentTarget.transform.position).magnitude;
+        var coefficient = _distance * distanceToTarget / 100;
+        if (coefficient < 1)
+            return 1;
+        return coefficient;
+    }
     private void FreeRotationCondition()
     {
-        var inputValue = _inputSystem.Movement.Look.ReadValue<Vector2>();
-        inputValue.Normalize();
-        var verticalAxis = -inputValue.y;
-        var horizontalAxis = inputValue.x;        
-
-        var verticalRotate = verticalAxis * _verticalSpeed * Time.deltaTime;
-        var horizontalRotate = horizontalAxis * _horizontalSpeed * Time.deltaTime;
-
-        if (_rotationDirection.x + verticalRotate <= _maxYRotation
-            && _rotationDirection.x + verticalRotate >= _minYRotation)
-            _rotationDirection.x += verticalRotate;
-        _rotationDirection.y += horizontalRotate;
-        _pivot.transform.localEulerAngles = _rotationDirection;
+        var inputDirection = _inputSystem.Movement.Look.ReadValue<Vector2>().normalized;
+        var lookDirection = new Vector3(-inputDirection.y,0, inputDirection.x) * _distance / 5; 
+        _lookAtPoint = (_player.transform.position + lookDirection) + _offset * _distance;
     }
     private void LookAtTarget()
     {
-        if (_enemiesPosition.Count > 0)
-        {
-            if (_currentTarget == null || !_currentTarget.gameObject.activeSelf)
-            {
-                ChangeCurrentTarget();
-            }
-        }
-        else
-        {
+        if (_currentTarget == null || _enemiesPosition.Count == 0)
             SwichLookMode(false);
-            return;
-        }
+        else
+            _lookAtPoint = (_player.transform.position + _currentTarget.position)/2 
+                + _offset * Zoom—oefficient() * _distance;
         if (_inputSystem.Movement.ChangeTarget.triggered)
-        {
-            var inputDirection = _inputSystem.Movement.Look.ReadValue<Vector2>();
-            ChangeCurrentTarget(inputDirection);
-        }
-        var lookAtPoint = (_currentTarget.position + _player.transform.position)/2f;
-        lookAtPoint.y -= 0.5f;
-        _pivot.transform.LookAt(lookAtPoint);
+            ChangeCurrentTarget(_inputSystem.Movement.Look.ReadValue<Vector2>());
     }
-
     private void ChangeCurrentTarget()
     {
         _currentTarget = FindNearestTarget();
     }
     private void ChangeCurrentTarget(Vector2 direction)
     {
+        direction.Normalize();
         if (_enemiesPosition.Count != 0)
         {
-            float axisX = Mathf.Sign(direction.x);
+            float inputDegree = Mathf.Acos(direction.x) * Mathf.Rad2Deg * Mathf.Sign(direction.y);
             var newTarget = _currentTarget;
             var minDegree = 361f;
+
             foreach (var target in _enemiesPosition)
             {
                 if (target == _currentTarget)
                     continue;
-                var angleToTarget = AngleToTarget(target);
-                if (angleToTarget * axisX >= 0 && Mathf.Abs(angleToTarget) < minDegree)
+                var angelToTarget = AngleToTarget(target);
+                var firstAngle = Mathf.Abs(angelToTarget - inputDegree);
+                if (inputDegree < 0)
+                    inputDegree += 360;
+                if (angelToTarget < 0)
+                    angelToTarget += 360;
+                var secondAngle = Mathf.Abs(angelToTarget - inputDegree);
+                float deltaDegree;
+                if (firstAngle - secondAngle < 5f)
+                    deltaDegree = firstAngle;
+                else
+                    deltaDegree = Mathf.Min(firstAngle, secondAngle);
+                if (deltaDegree < minDegree)
                 {
                     newTarget = target;
-                    minDegree = angleToTarget;
+                    minDegree = deltaDegree;
                 }
             }
             _currentTarget = newTarget;
@@ -118,18 +110,6 @@ public class CameraRotator : MonoBehaviour
             _isLookAtTarget = false;
         else
             _isLookAtTarget = lookAtTargetEnable;
-
-        _rotationDirection = _pivot.transform.eulerAngles;
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        _enemiesPosition.Add(other.transform);
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        _enemiesPosition.Remove(other.transform);
     }
 
     private void OnEnable()
@@ -161,21 +141,10 @@ public class CameraRotator : MonoBehaviour
 
     private float AngleToTarget(Transform target)
     {
-        var vectorBetweenPlayerAndTarget = target.position - transform.position;
+        var vectorBetweenPlayerAndTarget = target.position - _player.transform.position;
         var cameraForward = transform.forward;
         vectorBetweenPlayerAndTarget.y = 0;
         cameraForward.y = 0;
-        return Vector3.SignedAngle(cameraForward, vectorBetweenPlayerAndTarget,Vector3.up);
-    }
-
-    public void ClearTargetList()
-    {
-        for (int i = 0; i < _enemiesPosition.Count; i++)
-        {
-            if (!_enemiesPosition[i].gameObject.activeSelf)
-            {
-                _enemiesPosition.Remove(_enemiesPosition[i]);
-            }
-        }
+        return -Vector3.SignedAngle(Vector3.forward, vectorBetweenPlayerAndTarget,Vector3.up);
     }
 }

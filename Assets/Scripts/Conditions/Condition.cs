@@ -4,7 +4,7 @@ public abstract class Condition : MonoBehaviour
 {
     protected PlayerController PlayerController;
     protected PlayerParameters PlayerParameters;
-    protected Transform CameraHolder;
+    protected Transform CameraTransform;
     protected PlayerInputSystem InputSystem;
     protected Rigidbody Rigidbody;
 
@@ -14,7 +14,7 @@ public abstract class Condition : MonoBehaviour
         PlayerParameters = GetComponent<PlayerParameters>();
         InputSystem = PlayerController.InputSystem;
         Rigidbody = PlayerController.Rigidbody;
-        CameraHolder = PlayerController.CameraHolder;
+        CameraTransform = Camera.main.transform;
         PlayerController.AddCondition(this);
     }
 }

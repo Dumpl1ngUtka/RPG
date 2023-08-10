@@ -1,14 +1,20 @@
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour 
 {
     [SerializeField] protected BarsController BarsController;
+    [SerializeField] private MainMenu _mainMenu;
+
+    protected bool IsMenuOpen = false;
     public Condition MoveCondition { get; private set; }
     public Condition ApplyDamageCondition { get; private set; }
     public Condition DodgeCondition { get; private set; }
     public Condition AttackCondition { get; private set; }
     public Condition LootingCondition { get; private set; }
+    public Condition UseSpellCondition { get; private set; }
 
     private List<Condition> _conditions = new List<Condition>();
     
@@ -34,12 +40,24 @@ public class PlayerController : MonoBehaviour
         AttackCondition = GetComponent<Attack>();
         DodgeCondition = GetComponent<Dodge>();
         LootingCondition = GetComponent<Looting>();
+        UseSpellCondition = GetComponent<UseSpell>();
 
         Health = _parameters.MaxHealth.Get();
         Stamina = _parameters.MaxStamina.Get();
         Mana = 0;
 
+        InputSystem.UI.MenuOpen.started += ctx => StartCoroutine(OpenMainMenu());
+
         UpdateBarsValue();
+    }
+
+    private IEnumerator OpenMainMenu()
+    {
+        _mainMenu.gameObject.SetActive(true);
+        InputSystem.Disable();
+        while (_mainMenu.gameObject.activeSelf)
+            yield return null;
+        InputSystem.Enable();
     }
 
     private void Start()

@@ -5,6 +5,7 @@ public class Attack : Condition
 {
     [SerializeField] private AnimationCurve attackCurve;
     [SerializeField] private Transform _attackPoint;
+    [SerializeField] private AttackBar _attackBar;
     private float _timer;
     private bool _isAttackFinished;
     private float _maxAttackTime;
@@ -18,7 +19,6 @@ public class Attack : Condition
 
     private void Update()
     {
-
         if (!_isAttackFinished && 
             (_timer > _maxAttackTime || !InputSystem.Movement.Attack.IsPressed()))
         {
@@ -35,8 +35,9 @@ public class Attack : Condition
             }
             StartCoroutine(AttackRelease());
         }
-        else
+        else if (!_isAttackFinished)
         {
+            _attackBar.FillAmount(_timer/_maxAttackTime);
             _timer += Time.deltaTime;
         }
     }
@@ -49,15 +50,23 @@ public class Attack : Condition
 
     private float AttackQualifier(float timer)
     {
-        var value = attackCurve.Evaluate(_timer/ _maxAttackTime);
+        var value = attackCurve.Evaluate(timer/ _maxAttackTime);
         if (value < 0.4f)
+        {
+            StartCoroutine(_attackBar.Finish(Color.red));
             return 0.8f;
+        }
         else if (value > 0.6f)
+        {
+            StartCoroutine(_attackBar.Finish(Color.green));
             return 1.2f;  
+        }
+        StartCoroutine(_attackBar.Finish(Color.yellow));
         return 1f;
     }
     private void OnEnable()
     {
+        _attackBar.gameObject.SetActive(true);
         _timer = 0;
         _isAttackFinished = false;
         InputSystem = PlayerController.InputSystem;

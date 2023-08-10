@@ -38,14 +38,16 @@ public class Move : Condition
             PlayerController.ChangeCurrentCondition(PlayerController.LootingCondition);
         }
 
-        if (InputSystem.Movement.SpellLeft.triggered) 
-            Debug.Log("AAAA");
+        if (InputSystem.Movement.Spell.triggered)
+        {
+            PlayerController.ChangeCurrentCondition(PlayerController.AttackCondition);
+        }
     }
 
     private void FixedUpdate()
     {
         var inputValue = InputSystem.Movement.Move.ReadValue<Vector2>();
-        var direction = CameraHolder.forward * inputValue.y + CameraHolder.right * inputValue.x;
+        var direction = CameraTransform.forward * inputValue.y + CameraTransform.right * inputValue.x;
         direction.y = 0;
         direction.Normalize();
         Rigidbody.velocity = direction * _speed;

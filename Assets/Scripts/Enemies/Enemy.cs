@@ -10,7 +10,7 @@ public abstract class Enemy : MonoBehaviour
     [SerializeField] protected string Name;
     [SerializeField] protected float MaxHealth;
     [SerializeField] protected float DodgeChance;
-    [SerializeField] private CameraRotator _cameraRotator;
+    [SerializeField] private TargetDetector _targetDetector;
     protected Rigidbody Rigidbody;
     protected GameObject[] Targets;
     protected float Health;
@@ -20,7 +20,7 @@ public abstract class Enemy : MonoBehaviour
     {
         Rigidbody = GetComponent<Rigidbody>();
         SetTargets();
-        Dead.AddListener(_cameraRotator.ClearTargetList);
+        Dead.AddListener(_targetDetector.ClearTargetList);
     }
 
     protected void SetTargets()
