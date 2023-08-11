@@ -64,6 +64,7 @@
     <Compile Include="Assets\Scripts\Conditions\Looting.cs" />
     <Compile Include="Assets\Scripts\MenuCell.cs" />
     <Compile Include="Assets\Scripts\Runes\HealthRune.cs" />
+    <Compile Include="Assets\Scripts\Spells\ShieldSpell.cs" />
     <Compile Include="Assets\Scripts\MainMenu.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01_UGUI.cs" />
     <Compile Include="Assets\Scripts\ParametersDecorator.cs" />
@@ -91,7 +92,9 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TextConsoleSimulator.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\ObjectSpin.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextInfoDebugTool.cs" />
+    <Compile Include="Assets\Scripts\AttackBar.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextEventCheck.cs" />
+    <Compile Include="Assets\Scripts\Conditions\UseSpell.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\ShaderPropAnimator.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\WarpTextExample.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_DigitValidator.cs" />
@@ -111,6 +114,7 @@
     <Compile Include="Assets\Scripts\MagicMenu.cs" />
     <Compile Include="Assets\Scripts\AlphaSetter.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextSelector_B.cs" />
+    <Compile Include="Assets\Scripts\Spells\Spell.cs" />
     <Compile Include="Assets\Scripts\Conditions\ApplyDamage.cs" />
     <Compile Include="Assets\NewInputSystem\PlayerInputSystem.cs" />
     <Compile Include="Assets\Scripts\Inventory\InventoryCell.cs" />
@@ -124,8 +128,6 @@
     <Compile Include="Assets\Scripts\Runes\Rune.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
     <Compile Include="Assets\Scripts\Enemies\Skeleton.cs" />
-    <Compile Include="Assets\Scripts\AttackBar.cs" />
-    <Compile Include="Assets\Scripts\Conditions\UseSpell.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

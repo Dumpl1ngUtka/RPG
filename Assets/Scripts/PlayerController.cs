@@ -29,6 +29,8 @@ public class PlayerController : MonoBehaviour
 
     private PlayerParameters _parameters;
 
+    public Spell CurrentSpell;
+
     private void Awake()
     {
         InputSystem = new PlayerInputSystem();
@@ -41,6 +43,7 @@ public class PlayerController : MonoBehaviour
         DodgeCondition = GetComponent<Dodge>();
         LootingCondition = GetComponent<Looting>();
         UseSpellCondition = GetComponent<UseSpell>();
+        CurrentSpell = GetComponent<ShieldSpell>();
 
         Health = _parameters.MaxHealth.Get();
         Stamina = _parameters.MaxStamina.Get();
@@ -79,20 +82,22 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
-    public void SpendStamina(int delta)
+    public bool SpendStamina(int delta)
     {
+        if (delta > Stamina)
+            return false;
         Stamina -= delta;
-        if (Stamina < 0)
-            Stamina = 0;
         BarsController.ChangeValue(BarsController.Bar.Stamina, Stamina / _parameters.MaxStamina.Get());
+        return true;
     }
 
-    public void SpendMana(float delta)
+    public bool SpendMana(float delta)
     {
+        if (delta > Mana)
+            return false;
         Mana -= delta;
-        if (Mana < 0)
-            Mana = 0;
         BarsController.ChangeValue(BarsController.Bar.Mana, Mana / _parameters.MaxMana.Get());
+        return true;
     }
     public void ManaRecovery(float multiplier = 1)
     {

@@ -9084,6 +9084,8 @@ GameObject:
   - component: {fileID: 2086447759}
   - component: {fileID: 2086447761}
   - component: {fileID: 2086447763}
+  - component: {fileID: 2086447764}
+  - component: {fileID: 2086447765}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -9106,6 +9108,7 @@ MonoBehaviour:
   BarsController: {fileID: 2025516761}
   _mainMenu: {fileID: 131323455}
   CameraHolder: {fileID: 0}
+  CurrentSpell: {fileID: 0}
 --- !u!4 &2086447751
 Transform:
   m_ObjectHideFlags: 0
@@ -9324,6 +9327,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _menu: {fileID: 1024095801}
+--- !u!114 &2086447764
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2086447749}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6a9c084938c81f419421134f9c87ecc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2086447765
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2086447749}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd4fd97389c60f64f917e7bcb56f1443, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _icon: {fileID: 21300000, guid: a6fbd5a181bc51e42a61a73fe8d727c8, type: 3}
+  _bubble: {fileID: 3286970441081917393, guid: 8303e5ba6fdec3a44b1df131cc1eefe3, type: 3}
 --- !u!1 &2100755915
 GameObject:
   m_ObjectHideFlags: 0

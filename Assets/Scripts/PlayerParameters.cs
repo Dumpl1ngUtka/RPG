@@ -6,7 +6,7 @@ public class PlayerParameters : MonoBehaviour
     public Parameter MaxStamina = new Parameter(10f);
     public Parameter MaxMana = new Parameter(10f);
     public Parameter StaminaRegenerationPerSecond = new Parameter(5f);
-    public Parameter ManaRegenerationPerSecond = new Parameter(1f);
+    public Parameter ManaRegenerationPerSecond = new Parameter(5f);
     public Parameter Speed = new Parameter(5f);
     public Parameter ApplyDamageConditionTime = new Parameter(0.5f);
     public Parameter DodgeConditionTime = new Parameter(0.2f);

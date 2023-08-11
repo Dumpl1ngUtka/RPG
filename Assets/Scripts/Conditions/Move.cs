@@ -40,7 +40,7 @@ public class Move : Condition
 
         if (InputSystem.Movement.Spell.triggered)
         {
-            PlayerController.ChangeCurrentCondition(PlayerController.AttackCondition);
+            PlayerController.ChangeCurrentCondition(PlayerController.UseSpellCondition);
         }
     }
 

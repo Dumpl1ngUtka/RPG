@@ -379,6 +379,8 @@
 "Assets/Scripts/Runes/HealthRune.cs"
 "Assets/Scripts/Runes/Rune.cs"
 "Assets/Scripts/RunesHolder.cs"
+"Assets/Scripts/Spells/ShieldSpell.cs"
+"Assets/Scripts/Spells/Spell.cs"
 "Assets/Scripts/TakeItemsMenu.cs"
 "Assets/Scripts/TakeMenuCell.cs"
 "Assets/TargetDetector.cs"
